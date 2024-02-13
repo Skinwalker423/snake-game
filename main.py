@@ -6,6 +6,7 @@ screen = Screen()
 screen.setup(height=600, width=600)
 screen.bgcolor("green")
 screen.title("Snake Game")
+screen.tracer(0)
 
 new_snake = Snake()
 
@@ -26,9 +27,11 @@ def start_game():
     print("Game Over")
 
 
-screen.onkeypress(key="s", fun=start_game)
-screen.onkey(key="a", fun=new_snake.turn_left)
-screen.onkey(key="d", fun=new_snake.turn_right)
-
 screen.listen()
+screen.onkeypress(key="s", fun=start_game)
+screen.onkey(key="Up", fun=new_snake.up)
+screen.onkey(key="Right", fun=new_snake.right)
+screen.onkey(key="Left", fun=new_snake.left)
+screen.onkey(key="Down", fun=new_snake.down)
+
 screen.exitonclick()

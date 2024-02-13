@@ -1,19 +1,22 @@
 from turtle import Turtle
 
+STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
+MOVE_DISTANCE = 20
+
 
 class Snake:
     def __init__(self):
         self.segments = []
         self.create()
+        self.head = self.segments[-1]
 
     def create(self):
-        for index in range(0, 3):
-            starting_x = index * -20
+        for position in STARTING_POSITIONS:
             turtle = Turtle()
             turtle.penup()
             turtle.shape("square")
             turtle.color("white")
-            turtle.goto(x=starting_x, y=0)
+            turtle.goto(position)
             self.segments.insert(0, turtle)
 
     def move_forward(self):
@@ -27,10 +30,34 @@ class Snake:
                 self.segments[i].goto(x, y)
 
             else:
-                self.segments[i].forward(20)
+                self.segments[i].forward(MOVE_DISTANCE)
 
-    def turn_left(self):
-        self.segments[-1].left(90)
+    def up(self):
+        direction = self.get_heading()
+        if direction == 270:
+            return
+        self.head.setheading(90)
 
-    def turn_right(self):
-        self.segments[-1].right(90)
+    def right(self):
+        direction = self.get_heading()
+        if direction == 180:
+            return
+        self.head.setheading(0)
+
+    def left(self):
+        direction = self.get_heading()
+        if direction == 0:
+            return
+        self.head.setheading(180)
+
+    def down(self):
+        direction = self.get_heading()
+        if direction == 90:
+            return
+        self.head.setheading(270)
+
+    def get_heading(self):
+        if not self.head:
+            return 0
+        else:
+            return self.head.heading()

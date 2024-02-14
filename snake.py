@@ -83,3 +83,15 @@ class Snake:
             x -= 20
         turtle.goto(x, y)
         self.segments.insert(0, turtle)
+
+    def has_collided(self):
+        if len(self.segments) < 4:
+            return False
+
+        for square in self.segments[:-4]:
+            space_between_tail = self.head.distance(square)
+            if space_between_tail < 5:
+                print(f"has collided. distance is {space_between_tail}")
+                return True
+
+        return False

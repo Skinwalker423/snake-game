@@ -61,3 +61,25 @@ class Snake:
             return 0
         else:
             return self.head.heading()
+
+    def add_to_snake(self):
+        turtle = Turtle()
+        turtle.penup()
+        turtle.shape("square")
+        turtle.color("white")
+
+        tail_position = self.segments[0].position()
+        heading = self.get_heading()
+        x = tail_position[0]
+        y = tail_position[1]
+
+        if heading == 180:
+            x += 20
+        elif heading == 90:
+            y -= 20
+        elif heading == 270:
+            y += 20
+        else:
+            x -= 20
+        turtle.goto(x, y)
+        self.segments.insert(0, turtle)

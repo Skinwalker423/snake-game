@@ -16,13 +16,17 @@ scoreboard = Scoreboard()
 new_snake = Snake()
 new_food = Food()
 
+end_game = False
 
+
+def game_over():
+    global end_game
+    end_game = True
+    scoreboard.game_over()
 
 
 def start_game():
-    is_game_on = True
-    score = 0
-    while is_game_on:
+    while not end_game:
         screen.update()
         time.sleep(.1)
         distance = new_snake.head.distance(new_food)
@@ -31,18 +35,17 @@ def start_game():
         position_x = position[0]
         position_y = position[1]
 
-        if distance < 15:
+        if distance < 20:
+            print("increasing score")
             new_food.move_to_new_location()
             new_snake.add_to_snake()
             scoreboard.increase_score()
 
         if position_x > 280 or position_x < -280 or position_y > 280 or position_y < -280 or new_snake.has_collided():
-            is_game_on = False
+            scoreboard.reset()
+            new_snake.reset()
         else:
             new_snake.move_forward()
-    print("Game Over")
-    print(f"Your final score is {scoreboard.score}")
-    scoreboard.game_over()
 
 
 screen.listen()
@@ -51,6 +54,7 @@ screen.onkey(key="Up", fun=new_snake.up)
 screen.onkey(key="Right", fun=new_snake.right)
 screen.onkey(key="Left", fun=new_snake.left)
 screen.onkey(key="Down", fun=new_snake.down)
+screen.onkey(key="e", fun=game_over)
 
 start_game()
 

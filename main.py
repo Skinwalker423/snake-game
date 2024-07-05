@@ -21,11 +21,23 @@ end_game = False
 
 def game_over():
     global end_game
-    end_game = True
-    scoreboard.game_over()
+
+    replay = screen.textinput(title="Snake Game", prompt="Play Again?")
+    if replay is None:
+        end_game = True
+        scoreboard.game_over()
+    elif replay.lower() == 'y':
+        end_game = False
+        new_snake.reset()
+        scoreboard.reset()
+        start_game()
+    else:
+        end_game = True
+        scoreboard.game_over()
 
 
 def start_game():
+    screen.listen()
     while not end_game:
         screen.update()
         time.sleep(.1)
@@ -35,15 +47,15 @@ def start_game():
         position_x = position[0]
         position_y = position[1]
 
-        if distance < 20:
+        if distance < 15:
             print("increasing score")
             new_food.move_to_new_location()
             new_snake.add_to_snake()
             scoreboard.increase_score()
 
         if position_x > 280 or position_x < -280 or position_y > 280 or position_y < -280 or new_snake.has_collided():
-            scoreboard.reset()
-            new_snake.reset()
+            game_over()
+
         else:
             new_snake.move_forward()
 

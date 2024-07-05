@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53d9ff7a-652a-4726-a50a-8c7aae686356" name="Changes" comment="replay game">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="53d9ff7a-652a-4726-a50a-8c7aae686356" name="Changes" comment="reset game">
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +93,15 @@
       <option name="project" value="LOCAL" />
       <updated>1720210798982</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="reset game">
+      <option name="closed" value="true" />
+      <created>1720211434277</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720211434277</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,6 +117,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="replay game" />
-    <option name="LAST_COMMIT_MESSAGE" value="replay game" />
+    <MESSAGE value="reset game" />
+    <option name="LAST_COMMIT_MESSAGE" value="reset game" />
   </component>
 </project>

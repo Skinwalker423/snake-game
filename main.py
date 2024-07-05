@@ -28,7 +28,6 @@ def game_over():
         scoreboard.game_over()
     elif replay.lower() == 'y':
         end_game = False
-
         start_game()
     else:
         end_game = True
@@ -50,7 +49,6 @@ def start_game():
         position_y = position[1]
 
         if distance < 15:
-            print("increasing score")
             new_food.move_to_new_location()
             new_snake.add_to_snake()
             scoreboard.increase_score()

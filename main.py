@@ -28,8 +28,7 @@ def game_over():
         scoreboard.game_over()
     elif replay.lower() == 'y':
         end_game = False
-        new_snake.reset()
-        scoreboard.reset()
+
         start_game()
     else:
         end_game = True
@@ -38,6 +37,9 @@ def game_over():
 
 def start_game():
     screen.listen()
+    new_snake.reset()
+    scoreboard.reset()
+    new_food.move_to_new_location()
     while not end_game:
         screen.update()
         time.sleep(.1)
@@ -54,6 +56,7 @@ def start_game():
             scoreboard.increase_score()
 
         if position_x > 280 or position_x < -280 or position_y > 280 or position_y < -280 or new_snake.has_collided():
+
             game_over()
 
         else:
